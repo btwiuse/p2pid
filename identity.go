@@ -13,6 +13,14 @@ import (
 // Peer ID Seed Env String
 const PID_SEED = "PID_SEED"
 
+func FromEnv(key string) libp2p.Option {
+	opt, err := PersistentIdentityFromEnv(key)
+	if err != nil {
+		panic(err)
+	}
+	return opt
+}
+
 func PersistentIdentity() (libp2p.Option, error) {
 	return PersistentIdentityFromEnv(PID_SEED)
 }
